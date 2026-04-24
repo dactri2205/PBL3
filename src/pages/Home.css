@@ -1,0 +1,32 @@
+.auth-btn {
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Login */
+.login-btn {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+}
+
+.login-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Register (nổi bật hơn) */
+.register-btn {
+  background-color: #2bb38a;
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+.register-btn:hover {
+  background-color: #249e79;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(43, 179, 138, 0.4);
+}
