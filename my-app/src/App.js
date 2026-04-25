@@ -21,6 +21,15 @@ import FindTutor from "./pages/student/FindTutor";
 import Schedule from "./pages/student/Schedule";
 import Profile from "./pages/student/Profile";
 
+/* Tutor */
+import TutorLayout from "./layouts/TutorLayout";
+import TutorDashboard from "./pages/tutor/Dashboard";
+import TutorClasses from "./pages/tutor/Classes";
+import TutorStudents from "./pages/tutor/Students";
+import TutorSchedule from "./pages/tutor/Schedule";
+import TutorFinance from "./pages/tutor/Finance";
+import TutorProfile from "./pages/tutor/Profile";
+
 function App() {
   return (
     <Router>
@@ -48,6 +57,16 @@ function App() {
           <Route path="find-tutor" element={<FindTutor />} />
           <Route path="schedule" element={<Schedule />} />
           <Route path="profile" element={<Profile />} />
+        </Route>
+
+        {/* Tutor */}
+        <Route path="/tutor" element={<TutorLayout />}>
+          <Route path="dashboard" element={<TutorDashboard />} />
+          <Route path="classes" element={<TutorClasses />} />
+          <Route path="students" element={<TutorStudents />} />
+          <Route path="schedule" element={<TutorSchedule />} />
+          <Route path="finance" element={<TutorFinance />} />
+          <Route path="profile" element={<TutorProfile />} />
         </Route>
       </Routes>
     </Router>

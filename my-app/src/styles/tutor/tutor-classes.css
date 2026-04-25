@@ -1,0 +1,73 @@
+.tutor-classes__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.tutor-class-card {
+  padding: 24px;
+}
+
+.tutor-class-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tutor-class-card__subject {
+  margin: 26px 0 6px;
+  color: var(--tutor-primary);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.tutor-class-card__title {
+  margin: 0 0 22px;
+  font-size: 22px;
+}
+
+.tutor-class-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--tutor-muted);
+  margin-bottom: 14px;
+}
+
+.tutor-class-card__footer {
+  margin-top: 34px;
+  padding-top: 20px;
+  border-top: 1px solid var(--tutor-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tutor-class-card__avatars {
+  display: flex;
+}
+
+.tutor-class-card__avatars span {
+  width: 30px;
+  height: 30px;
+  background: var(--tutor-secondary);
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-left: -8px;
+}
+
+.tutor-class-card__avatars span:first-child {
+  margin-left: 0;
+}
+
+@media (max-width: 1100px) {
+  .tutor-classes__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .tutor-classes__grid {
+    grid-template-columns: 1fr;
+  }
+}
