@@ -1,13 +1,20 @@
-export default function TutorClassCard({ item }) {
+export default function TutorClassCard({ item, onViewDetail }) {
   const isActive = item.status === "active";
 
   return (
     <article className="tutor-class-card tutor-card">
       <div className="tutor-class-card__top">
-        <span className={`tutor-badge ${isActive ? "tutor-badge--active" : "tutor-badge--pending"}`}>
+        <span
+          className={`tutor-badge ${
+            isActive ? "tutor-badge--active" : "tutor-badge--pending"
+          }`}
+        >
           {isActive ? "Đang học" : "Chờ mở lớp"}
         </span>
-        <span className="material-symbols-outlined">more_vert</span>
+
+        <button className="tutor-class-card__menu">
+          <span className="material-symbols-outlined">more_vert</span>
+        </button>
       </div>
 
       <p className="tutor-class-card__subject">{item.subject}</p>
@@ -29,7 +36,13 @@ export default function TutorClassCard({ item }) {
           <span></span>
           <span></span>
         </div>
-        <button className="tutor-btn tutor-btn--ghost">Xem chi tiết</button>
+
+        <button
+          className="tutor-btn tutor-btn--ghost"
+          onClick={onViewDetail}
+        >
+          Xem chi tiết
+        </button>
       </div>
     </article>
   );

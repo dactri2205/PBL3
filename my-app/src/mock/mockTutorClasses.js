@@ -17,8 +17,8 @@ export const tutorClasses = [
   },
   {
     id: 3,
-    subject: "Công nghệ thông tin",
-    title: "Lập trình Python cơ bản",
+    subject: "Lập trình Python",
+    title: "Công nghệ thông tin",
     status: "active",
     time: "T7, CN - 09:00",
     students: "4 học viên đăng ký",
