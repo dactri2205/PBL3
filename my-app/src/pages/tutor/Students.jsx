@@ -5,6 +5,10 @@ import { tutorStudents, tutorRequests } from "../../mock/mockTutorStudents";
 
 export default function Students() {
   const [tab, setTab] = useState("list");
+  const subjectStats = tutorStudents.reduce((acc, student) => {
+    acc[student.subject] = (acc[student.subject] || 0) + 1;
+    return acc;
+  }, {});
 
   const [students, setStudents] = useState(tutorStudents);
   const [requests, setRequests] = useState(tutorRequests);
