@@ -243,12 +243,12 @@ export default function LoginSplit() {
                 </div>
 
                 <div className="text-right">
-                  <a
-                    href="#"
-                    className="text-[#fdfaf2] text-sm md:text-base hover:text-[#e2d5c1] italic transition-colors"
+                  <button
+                    type="button"
+                    className="text-[#fdfaf2] text-sm md:text-base hover:text-[#e2d5c1] italic transition-colors bg-none border-none cursor-pointer p-0"
                   >
                     Quên mật khẩu?
-                  </a>
+                  </button>
                 </div>
 
                 {error && (

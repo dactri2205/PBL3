@@ -18,7 +18,7 @@ export default function Profile() {
         <div style={{ display: "flex", justifyContent: "space-between", gap: "20px", padding: "24px", marginTop: "-46px", alignItems: "center" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
             <img
-              src="https://i.pravatar.cc/120?img=12"
+              src="/assets/images/avatar-placeholder.png"
               alt="avatar"
               style={{
                 width: "92px",

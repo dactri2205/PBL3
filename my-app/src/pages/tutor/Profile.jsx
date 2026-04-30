@@ -28,7 +28,7 @@ export default function Profile() {
           }}
         >
           <img
-            src="https://i.pravatar.cc/160?img=12"
+            src="/assets/images/avatar-placeholder.png"
             alt=""
             style={{
               width: 110,

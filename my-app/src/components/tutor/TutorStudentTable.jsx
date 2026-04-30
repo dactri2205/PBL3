@@ -1,4 +1,11 @@
-export default function TutorStudentTable({ students }) {
+export default function TutorStudentTable({
+  students,
+  searchTerm,
+  setSearchTerm,
+  statusFilter,
+  setStatusFilter,
+  onViewStudent,
+}) {
   const statusMap = {
     active: ["Đang học", "tutor-badge--active"],
     pending: ["Chờ lịch", "tutor-badge--pending"],
@@ -10,10 +17,24 @@ export default function TutorStudentTable({ students }) {
       <div className="tutor-student-table__toolbar">
         <div className="tutor-student-table__search">
           <span className="material-symbols-outlined">search</span>
-          <input placeholder="Tìm tên hoặc môn học..." />
+
+          <input
+            placeholder="Tìm tên học viên hoặc môn học..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
 
-        <button className="tutor-btn tutor-btn--ghost">Tất cả trạng thái</button>
+        <select
+          className="tutor-student-table__filter"
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+        >
+          <option value="all">Tất cả trạng thái</option>
+          <option value="active">Đang học</option>
+          <option value="pending">Chờ lịch</option>
+          <option value="suspended">Tạm dừng</option>
+        </select>
       </div>
 
       <table>
@@ -30,36 +51,60 @@ export default function TutorStudentTable({ students }) {
 
         <tbody>
           {students.map((item) => {
-            const [label, className] = statusMap[item.status];
+            const [label, className] =
+              statusMap[item.status] || statusMap.active;
 
             return (
-              <tr key={item.name}>
+              <tr key={item.id}>
                 <td>
                   <div className="tutor-student-table__person">
-                    <img src={`https://i.pravatar.cc/80?u=${item.name}`} alt="" />
+                    <div className="tutor-student-table__anonymous-avatar">
+                      <span className="material-symbols-outlined">person</span>
+                    </div>
                     <strong>{item.name}</strong>
                   </div>
                 </td>
+
                 <td>
-                  <span className="tutor-student-table__tag">{item.subject}</span>
+                  <span className="tutor-student-table__tag">
+                    {item.subject}
+                  </span>
                 </td>
+
                 <td>
                   <span className={`tutor-badge ${className}`}>{label}</span>
                 </td>
+
                 <td>
-                  <div className="tutor-student-table__progress">
-                    <span style={{ width: `${item.progress}%` }}></span>
+                  <div className="tutor-student-table__progress-wrap">
+                    <span>{item.progress}%</span>
+                    <div className="tutor-student-table__progress">
+                      <span style={{ width: `${item.progress}%` }}></span>
+                    </div>
                   </div>
                 </td>
+
                 <td>{item.next}</td>
+
                 <td>
-                  <span className="material-symbols-outlined">more_vert</span>
+                  <button
+                    className="tutor-student-table__menu-btn"
+                    onClick={() => onViewStudent(item)}
+                  >
+                    <span className="material-symbols-outlined">more_vert</span>
+                  </button>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+
+      {students.length === 0 && (
+        <div className="tutor-student-table__empty">
+          Không tìm thấy học viên phù hợp.
+        </div>
+      )}
     </div>
   );
 }
