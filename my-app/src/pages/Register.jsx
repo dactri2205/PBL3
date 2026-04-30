@@ -10,7 +10,6 @@ import {
   Users,
   BookOpen,
   GraduationCap,
-  ShieldCheck,
   Lock,
 } from "lucide-react";
 
@@ -382,13 +381,19 @@ Email: ${formData.email}`
 
               <p className="mt-8 text-center text-xs text-[#8c7355] leading-relaxed max-w-sm mx-auto uppercase tracking-wide">
                 Bằng cách đăng ký, bạn đồng ý với{" "}
-                <a href="#" className="font-bold underline hover:text-[#5c4a3d]">
+                <button
+                  type="button"
+                  className="font-bold underline hover:text-[#5c4a3d] bg-none border-none cursor-pointer p-0"
+                >
                   Điều khoản dịch vụ
-                </a>{" "}
+                </button>{" "}
                 và{" "}
-                <a href="#" className="font-bold underline hover:text-[#5c4a3d]">
+                <button
+                  type="button"
+                  className="font-bold underline hover:text-[#5c4a3d] bg-none border-none cursor-pointer p-0"
+                >
                   Chính sách bảo mật
-                </a>{" "}
+                </button>{" "}
                 của chúng tôi.
               </p>
             </div>

@@ -8,7 +8,7 @@ const tutors = [
   {
     id: 1,
     name: "Nguyễn Văn A",
-    avatar: "https://i.pravatar.cc/120?img=11",
+    avatar: null,
     rating: 4.8,
     reviews: 48,
     subjects: ["TOÁN", "LÝ"],
@@ -18,7 +18,7 @@ const tutors = [
   {
     id: 2,
     name: "Trần Thị B",
-    avatar: "https://i.pravatar.cc/120?img=32",
+    avatar: null,
     rating: 4.9,
     reviews: 64,
     subjects: ["TIẾNG ANH", "IELTS"],
@@ -28,7 +28,7 @@ const tutors = [
   {
     id: 3,
     name: "Lê Văn C",
-    avatar: "https://i.pravatar.cc/120?img=15",
+    avatar: null,
     rating: 4.7,
     reviews: 45,
     subjects: ["HÓA HỌC", "SINH HỌC"],

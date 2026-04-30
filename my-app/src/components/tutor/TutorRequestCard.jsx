@@ -2,7 +2,7 @@ export default function TutorRequestCard({ item, onApprove, onReject }) {
   return (
     <article className="tutor-request tutor-card">
       <div className="tutor-request__left">
-        <img src={`https://i.pravatar.cc/80?u=${item.name}`} alt={item.name} />
+        <img src={`anonymous.jpg`} alt="Anonymous" />
 
         <div>
           <div className="tutor-request__heading">

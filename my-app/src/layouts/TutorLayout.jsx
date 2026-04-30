@@ -10,6 +10,7 @@ import "../styles/tutor/tutor-classes.css";
 import "../styles/tutor/tutor-students.css";
 import "../styles/tutor/tutor-finance.css";
 import "../styles/tutor/tutor-card.css";
+import "../styles/tutor/tutor-subjects.css";
 
 export default function TutorLayout() {
   return (
