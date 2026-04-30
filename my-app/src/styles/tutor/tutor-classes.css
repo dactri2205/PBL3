@@ -133,3 +133,49 @@
   cursor: pointer;
   color: var(--tutor-text);
 }
+.tutor-class-student-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 12px 0 20px;
+}
+
+.tutor-class-student-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #f8f8f8;
+}
+
+.tutor-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tutor-badge--success,
+.tutor-badge--active {
+  background: #e8f6ee;
+  color: #267a42;
+}
+
+.tutor-badge--pending {
+  background: #fff5dc;
+  color: #9a6a00;
+}
+
+.tutor-badge--closed {
+  background: #eeeeee;
+  color: #555;
+}
+
+.tutor-badge--cancelled {
+  background: #fdeaea;
+  color: #b42318;
+}

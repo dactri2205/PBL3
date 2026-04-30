@@ -1,49 +1,52 @@
 export default function TutorClassCard({ item, onViewDetail }) {
-  const isActive = item.status === "active";
+  const approvedCount = item.students.filter(
+    (student) => student.status === "approved"
+  ).length;
+
+  const pendingCount = item.students.filter(
+    (student) => student.status === "pending"
+  ).length;
+
+  const getStatusText = (status) => {
+    if (status === "active") return "Đang học";
+    if (status === "pending") return "Chờ mở lớp";
+    if (status === "closed") return "Đã đóng";
+    if (status === "cancelled") return "Đã hủy";
+    return status;
+  };
 
   return (
-    <article className="tutor-class-card tutor-card">
-      <div className="tutor-class-card__top">
-        <span
-          className={`tutor-badge ${
-            isActive ? "tutor-badge--active" : "tutor-badge--pending"
-          }`}
-        >
-          {isActive ? "Đang học" : "Chờ mở lớp"}
-        </span>
-
-        <button className="tutor-class-card__menu">
-          <span className="material-symbols-outlined">more_vert</span>
-        </button>
-      </div>
-
-      <p className="tutor-class-card__subject">{item.subject}</p>
-      <h3 className="tutor-class-card__title">{item.title}</h3>
-
-      <div className="tutor-class-card__meta">
-        <span className="material-symbols-outlined">schedule</span>
-        {item.time}
-      </div>
-
-      <div className="tutor-class-card__meta">
-        <span className="material-symbols-outlined">groups</span>
-        {item.students}
-      </div>
-
-      <div className="tutor-class-card__footer">
-        <div className="tutor-class-card__avatars">
-          <span></span>
-          <span></span>
-          <span></span>
+    <div className="tutor-card tutor-class-card">
+      <div className="tutor-class-card__header">
+        <div>
+          <h3>{item.title}</h3>
+          <p>{item.subject}</p>
         </div>
 
-        <button
-          className="tutor-btn tutor-btn--ghost"
-          onClick={onViewDetail}
-        >
-          Xem chi tiết
-        </button>
+        <span className={`tutor-badge tutor-badge--${item.status}`}>
+          {getStatusText(item.status)}
+        </span>
       </div>
-    </article>
+
+      <p>
+        <strong>Lịch học:</strong> {item.time}
+      </p>
+
+      <p>
+        <strong>Học phí:</strong> {item.price.toLocaleString("vi-VN")}đ / buổi
+      </p>
+
+      <p>
+        <strong>Học viên:</strong> {approvedCount}/{item.maxStudents}
+      </p>
+
+      <p>
+        <strong>Chờ duyệt:</strong> {pendingCount} học viên
+      </p>
+
+      <button className="tutor-btn tutor-btn--primary" onClick={onViewDetail}>
+        Xem chi tiết
+      </button>
+    </div>
   );
 }
