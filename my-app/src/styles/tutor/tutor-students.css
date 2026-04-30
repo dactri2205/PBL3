@@ -289,3 +289,245 @@
   gap: 12px;
   flex-wrap: wrap;
 }
+
+.tutor-student-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.tutor-student-stats__item {
+  padding: 18px;
+}
+
+.tutor-student-stats__item p {
+  margin: 0;
+  color: var(--tutor-muted);
+  font-weight: 600;
+}
+
+.tutor-student-stats__item h3 {
+  margin: 8px 0 0;
+  color: var(--tutor-primary);
+  font-size: 28px;
+}
+
+.tutor-student-subject-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.tutor-student-subject-stats__item {
+  padding: 18px;
+}
+
+.tutor-student-subject-stats__item p {
+  margin: 0;
+  color: var(--tutor-muted);
+  font-weight: 600;
+}
+
+.tutor-student-subject-stats__item h3 {
+  margin: 8px 0 0;
+  color: var(--tutor-primary);
+  font-size: 22px;
+}
+
+.tutor-student-subject-stats__empty {
+  padding: 20px;
+  color: var(--tutor-muted);
+}
+
+.tutor-students__tabs {
+  display: flex;
+  gap: 22px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid var(--tutor-border);
+}
+
+.tutor-students__tab {
+  border: none;
+  background: transparent;
+  padding: 0 0 14px;
+  color: var(--tutor-muted);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.tutor-students__tab--active {
+  color: var(--tutor-primary);
+  border-bottom: 3px solid var(--tutor-primary);
+}
+
+.tutor-students__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--tutor-pending);
+  color: #fff;
+  font-size: 12px;
+}
+
+.tutor-student-table {
+  padding: 22px;
+  overflow-x: auto;
+}
+
+.tutor-student-table__toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.tutor-student-table__search {
+  width: 420px;
+  background: var(--tutor-surface-soft);
+  border-radius: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 16px;
+  color: var(--tutor-muted);
+}
+
+.tutor-student-table__search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  color: var(--tutor-text);
+}
+
+.tutor-student-table__filter {
+  border: 1px solid var(--tutor-border);
+  background: var(--tutor-surface);
+  border-radius: 14px;
+  padding: 12px 16px;
+  color: var(--tutor-text);
+  font-weight: 700;
+  outline: none;
+}
+
+.tutor-student-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tutor-student-table th {
+  text-align: left;
+  color: var(--tutor-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 14px;
+}
+
+.tutor-student-table td {
+  padding: 16px 14px;
+  border-top: 1px solid var(--tutor-border);
+}
+
+.tutor-student-table__person {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tutor-student-table__anonymous-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #EFE7C6;
+  color: #7C6E27;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tutor-student-table__anonymous-avatar .material-symbols-outlined {
+  font-size: 24px;
+}
+
+.tutor-student-table__tag {
+  background: var(--tutor-surface-soft);
+  color: var(--tutor-muted);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.tutor-student-table__progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tutor-student-table__progress-wrap > span {
+  font-size: 12px;
+  color: var(--tutor-muted);
+  min-width: 34px;
+}
+
+.tutor-student-table__progress {
+  width: 110px;
+  height: 6px;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.tutor-student-table__progress span {
+  display: block;
+  height: 100%;
+  background: var(--tutor-primary);
+}
+
+.tutor-student-table__menu-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--tutor-text);
+}
+
+.tutor-student-table__empty {
+  padding: 32px;
+  text-align: center;
+  color: var(--tutor-muted);
+}
+
+.tutor-student-detail p {
+  color: var(--tutor-muted);
+}
+
+.tutor-student-detail strong {
+  color: var(--tutor-text);
+}
+
+@media (max-width: 1100px) {
+  .tutor-student-stats,
+  .tutor-student-subject-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tutor-student-table__toolbar {
+    flex-direction: column;
+  }
+
+  .tutor-student-table__search {
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .tutor-student-stats,
+  .tutor-student-subject-stats {
+    grid-template-columns: 1fr;
+  }
+}

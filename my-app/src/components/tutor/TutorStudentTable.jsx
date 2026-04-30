@@ -17,8 +17,9 @@ export default function TutorStudentTable({
       <div className="tutor-student-table__toolbar">
         <div className="tutor-student-table__search">
           <span className="material-symbols-outlined">search</span>
+
           <input
-            placeholder="Tìm tên hoặc môn học..."
+            placeholder="Tìm tên học viên hoặc môn học..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -54,13 +55,12 @@ export default function TutorStudentTable({
               statusMap[item.status] || statusMap.active;
 
             return (
-              <tr key={item.name}>
+              <tr key={item.id}>
                 <td>
                   <div className="tutor-student-table__person">
-                    <img
-                      src={`https://i.pravatar.cc/80?u=${item.name}`}
-                      alt={item.name}
-                    />
+                    <div className="tutor-student-table__anonymous-avatar">
+                      <span className="material-symbols-outlined">person</span>
+                    </div>
                     <strong>{item.name}</strong>
                   </div>
                 </td>
@@ -72,9 +72,7 @@ export default function TutorStudentTable({
                 </td>
 
                 <td>
-                  <span className={`tutor-badge ${className}`}>
-                    {label}
-                  </span>
+                  <span className={`tutor-badge ${className}`}>{label}</span>
                 </td>
 
                 <td>
@@ -93,9 +91,7 @@ export default function TutorStudentTable({
                     className="tutor-student-table__menu-btn"
                     onClick={() => onViewStudent(item)}
                   >
-                    <span className="material-symbols-outlined">
-                      more_vert
-                    </span>
+                    <span className="material-symbols-outlined">more_vert</span>
                   </button>
                 </td>
               </tr>
