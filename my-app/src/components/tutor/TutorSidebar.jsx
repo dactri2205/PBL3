@@ -3,10 +3,11 @@ import { NavLink } from "react-router-dom";
 const menuItems = [
   { to: "/tutor/dashboard", label: "Tổng quan", icon: "dashboard" },
   { to: "/tutor/subjects", label: "Môn học", icon: "subject" },
-  { to: "/tutor/classes", label: "Lớp học", icon: "menu_book" },
+  { to: "/tutor/classes", label: "Nhóm/Lớp học", icon: "menu_book" },
   { to: "/tutor/students", label: "Học viên", icon: "groups" },
   { to: "/tutor/schedule", label: "Lịch trình", icon: "calendar_month" },
   { to: "/tutor/finance", label: "Tài chính", icon: "account_balance_wallet" },
+  { to: "/tutor/find-students", label: "Tìm học viên", icon: "person_search" },
   { to: "/tutor/profile", label: "Hồ sơ cá nhân", icon: "account_circle" },
   
 ];

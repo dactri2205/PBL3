@@ -7,7 +7,7 @@ export default function TutorTopbar({
 }) {
   const location = useLocation();
 
-  const hideSearchPaths = ["/tutor/schedule"];
+  const hideSearchPaths = ["/tutor/schedule", "/tutor/finance","/tutor/find-students"];
   const shouldHideSearch = hideSearchPaths.includes(location.pathname);
 
   return (

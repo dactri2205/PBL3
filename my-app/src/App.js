@@ -30,6 +30,7 @@ import TutorSchedule from "./pages/tutor/Schedule";
 import TutorFinance from "./pages/tutor/Finance";
 import TutorProfile from "./pages/tutor/Profile";
 import TutorSubjects from "./pages/tutor/Subjects";
+import TutorFindStudents from "./pages/tutor/FindStudents";
 
 function App() {
   return (
@@ -69,6 +70,7 @@ function App() {
           <Route path="finance" element={<TutorFinance />} />
           <Route path="profile" element={<TutorProfile />} />
           <Route path="subjects" element={<TutorSubjects />} />
+          <Route path="find-students" element={<TutorFindStudents />} />
         </Route>
       </Routes>
     </Router>
