@@ -1,7 +1,7 @@
 .tutor-finance__summary {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: 1.25fr 1fr 1fr 1fr;
+  gap: 22px;
   margin-bottom: 28px;
 }
 
@@ -10,11 +10,18 @@
   background: var(--tutor-primary);
   color: #fff;
   border-radius: var(--tutor-radius-lg);
+  box-shadow: var(--tutor-shadow);
+}
+
+.tutor-finance__balance p {
+  margin: 0;
+  opacity: 0.85;
+  font-weight: 600;
 }
 
 .tutor-finance__balance h2 {
+  margin: 10px 0 24px;
   font-size: 34px;
-  margin: 8px 0 22px;
 }
 
 .tutor-finance__actions {
@@ -24,92 +31,294 @@
 
 .tutor-finance__actions button {
   border: none;
-  background: rgba(255,255,255,.18);
+  background: rgba(255, 255, 255, 0.18);
   color: #fff;
   padding: 12px 24px;
   border-radius: 12px;
   font-weight: 800;
+  cursor: pointer;
+}
+
+.tutor-finance__actions button:hover {
+  background: rgba(255, 255, 255, 0.28);
 }
 
 .tutor-finance__small-card {
-  padding: 28px;
+  padding: 26px;
+}
+
+.tutor-finance__small-card .material-symbols-outlined {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--tutor-surface-soft);
+  color: var(--tutor-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tutor-finance__small-card p {
+  color: var(--tutor-muted);
+  margin: 18px 0 8px;
+  font-weight: 600;
 }
 
 .tutor-finance__small-card h3 {
+  margin: 0 0 8px;
   font-size: 28px;
-  margin: 8px 0;
+  color: var(--tutor-text);
+}
+
+.tutor-finance__small-card small {
+  color: var(--tutor-success);
+  font-weight: 600;
 }
 
 .tutor-finance__grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
   gap: 28px;
 }
 
-.tutor-transactions {
+.tutor-finance__chart-card,
+.tutor-finance__transactions {
   padding: 24px;
 }
 
-.tutor-transaction {
+.tutor-finance__section-header {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--tutor-border);
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 22px;
 }
 
-.tutor-transaction__icon {
-  width: 42px;
-  height: 42px;
+.tutor-finance__section-header h3 {
+  margin: 0;
+  font-size: 22px;
+  color: var(--tutor-text);
+}
+
+.tutor-finance__section-header p {
+  margin: 8px 0 0;
+  color: var(--tutor-muted);
+}
+
+.tutor-finance__section-header select {
+  border: 1px solid var(--tutor-border);
+  background: var(--tutor-surface);
+  color: var(--tutor-text);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 700;
+  outline: none;
+}
+
+.tutor-finance__fake-chart {
+  height: 320px;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 24%,
+    rgba(227, 222, 198, 0.8) 25%,
+    transparent 26%
+  );
+  background-size: 100% 64px;
+  display: flex;
+  align-items: center;
+}
+
+.tutor-finance__fake-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tutor-finance__transaction-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.tutor-transaction-item {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--tutor-border);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.tutor-transaction-item:hover {
+  background: rgba(124, 110, 39, 0.05);
+}
+
+.tutor-transaction-item__icon {
+  width: 46px;
+  height: 46px;
   border-radius: 14px;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
 }
 
-.tutor-transaction__icon--paid {
+.tutor-transaction-item__icon.paid,
+.tutor-transaction-item__icon.withdrawn {
   background: var(--tutor-success-bg);
   color: var(--tutor-success);
 }
 
-.tutor-transaction__icon--pending {
+.tutor-transaction-item__icon.pending {
   background: var(--tutor-pending-bg);
   color: var(--tutor-pending);
 }
 
-.tutor-transaction__info {
-  flex: 1;
+.tutor-transaction-item__icon.failed {
+  background: var(--tutor-error-bg);
+  color: var(--tutor-error);
 }
 
-.tutor-transaction__info span {
+.tutor-transaction-item__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.tutor-transaction-item__info strong {
+  display: block;
+  color: var(--tutor-text);
+}
+
+.tutor-transaction-item__info span {
   display: block;
   color: var(--tutor-muted);
-  font-size: 13px;
   margin-top: 4px;
 }
 
-.tutor-transaction__amount {
+.tutor-transaction-item__info small {
+  display: block;
+  color: var(--tutor-muted);
+  margin-top: 4px;
+}
+
+.tutor-transaction-item__right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.tutor-transaction-item__right strong {
+  color: var(--tutor-text);
+}
+
+.tutor-finance__empty {
+  padding: 32px;
+  text-align: center;
+  color: var(--tutor-muted);
+}
+
+.tutor-finance__modal-desc {
+  color: var(--tutor-muted);
+  margin-bottom: 18px;
+}
+
+.tutor-finance__modal-desc strong {
+  color: var(--tutor-primary);
+}
+
+.tutor-finance__error-box {
+  padding: 12px 14px;
+  background: var(--tutor-error-bg);
+  color: var(--tutor-error);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.tutor-modal__content select {
+  border: 1px solid var(--tutor-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  background: var(--tutor-surface);
+  color: var(--tutor-text);
+}
+
+.tutor-modal__content select:focus {
+  border-color: var(--tutor-primary);
+}
+
+.tutor-invoice {
+  border: 1px solid var(--tutor-border);
+  border-radius: 18px;
+  overflow: hidden;
+  margin-top: 18px;
+}
+
+.tutor-invoice__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--tutor-border);
+}
+
+.tutor-invoice__row span {
+  color: var(--tutor-muted);
+}
+
+.tutor-invoice__row strong {
+  color: var(--tutor-text);
   text-align: right;
 }
 
-.tutor-transaction__amount span {
+.tutor-invoice__note {
+  padding: 16px;
+}
+
+.tutor-invoice__note span {
   display: block;
-  font-size: 12px;
-  font-weight: 800;
-  margin-top: 4px;
-  text-transform: uppercase;
+  color: var(--tutor-muted);
+  margin-bottom: 8px;
 }
 
-.is-paid {
-  color: var(--tutor-success);
+.tutor-invoice__note p {
+  margin: 0;
+  color: var(--tutor-text);
+  line-height: 1.6;
 }
 
-.is-pending {
-  color: var(--tutor-pending);
-}
+@media (max-width: 1300px) {
+  .tutor-finance__summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-@media (max-width: 1100px) {
-  .tutor-finance__summary,
   .tutor-finance__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .tutor-finance__summary {
+    grid-template-columns: 1fr;
+  }
+
+  .tutor-finance__section-header {
+    flex-direction: column;
+  }
+
+  .tutor-transaction-item {
+    align-items: flex-start;
+  }
+
+  .tutor-invoice__row {
+    flex-direction: column;
+  }
+
+  .tutor-invoice__row strong {
+    text-align: left;
   }
 }
