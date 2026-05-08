@@ -13,6 +13,7 @@ import "../styles/tutor/tutor-finance.css";
 import "../styles/tutor/tutor-card.css";
 import "../styles/tutor/tutor-subjects.css";
 import "../styles/tutor/tutor-schedule.css";
+import "../styles/tutor/tutor-reviews.css";
 
 export default function TutorLayout() {
   const location = useLocation();
