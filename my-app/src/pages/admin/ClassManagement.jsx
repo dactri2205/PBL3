@@ -1,89 +1,56 @@
+import { useMemo, useState } from "react";
+
+const classes = [
+  { id: "REQ-0924-A1", title: "Toán Đại số Lớp 10", status: "Đang tìm gia sư", location: "Quận 7, TP.HCM", fee: "2.500.000đ / tháng" },
+  { id: "REQ-1094-B2", title: "Lý 11", status: "Đang dạy", location: "Quận 3, TP.HCM", fee: "3.200.000đ / tháng" },
+  { id: "REQ-2040-C7", title: "IELTS Writing", status: "Hoàn thành", location: "Online", fee: "3.000.000đ / tháng" },
+  { id: "REQ-3101-K9", title: "Hóa 12", status: "Đã hủy", location: "Quận 10, TP.HCM", fee: "2.700.000đ / tháng" },
+];
+
+const tabs = ["Đang tìm gia sư", "Đang dạy", "Hoàn thành", "Đã hủy"];
+
 export default function ClassManagement() {
+  const [activeTab, setActiveTab] = useState("Đang tìm gia sư");
+
+  const filtered = useMemo(
+    () => classes.filter((item) => item.status === activeTab),
+    [activeTab]
+  );
+
   return (
-    <div className="max-w-7xl mx-auto space-y-8">
-      <div>
-        <h2 className="text-5xl font-serif">Class Management</h2>
-        <p className="mt-2 text-lg text-stone-600">
-          Review and coordinate tutoring requests.
-        </p>
+    <section className="admin-page">
+      <div className="admin-page__header">
+        <h2>Quản lý lớp học</h2>
+        <p>Rà soát yêu cầu mở lớp và phân công gia sư.</p>
       </div>
 
-      <div className="flex gap-8 border-b relative">
-        <button className="pb-3 border-b-2 border-[#7b5800] text-[#7b5800] font-semibold">
-          Đang tìm gia sư
-        </button>
-        <button className="pb-3 text-stone-500">Đang dạy</button>
-        <button className="pb-3 text-stone-500">Hoàn thành</button>
-        <button className="pb-3 text-stone-500">Đã hủy</button>
+      <div className="admin-toolbar" style={{ justifyContent: "flex-start" }}>
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            type="button"
+            className={`admin-btn ${tab === activeTab ? "admin-btn--primary" : "admin-btn--secondary"}`}
+            onClick={() => setActiveTab(tab)}
+          >
+            {tab}
+          </button>
+        ))}
       </div>
 
-      <div className="grid xl:grid-cols-3 gap-8">
-        <div className="xl:col-span-2 space-y-6">
-          <div className="bg-white p-8 rounded">
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="text-3xl font-serif">Toán Đại Số Lớp 10</h3>
-                <p className="text-sm uppercase tracking-widest text-stone-500 mt-1">
-                  Req-0924-A1
-                </p>
-              </div>
-              <span className="bg-slate-200 px-3 py-1 text-sm rounded">Pending</span>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 mt-8">
-              <div>
-                <p className="text-xs uppercase tracking-widest text-stone-500">Phụ Huynh / Học Viên</p>
-                <p className="mt-2">Nguyễn Văn A</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-stone-500">Địa Điểm</p>
-                <p className="mt-2">Quận 7, TP.HCM</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-stone-500">Yêu Cầu Gia Sư</p>
-                <p className="mt-2">Sinh viên Sư Phạm Toán, Nữ</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-stone-500">Mức Lương</p>
-                <p className="mt-2 text-[#7b5800] font-semibold">2.500.000đ / tháng</p>
-              </div>
-            </div>
-          </div>
+      {filtered.map((item) => (
+        <div key={item.id} className="admin-card">
+          <h3 style={{ marginTop: 0 }}>{item.title}</h3>
+          <p style={{ color: "var(--color-text-muted)" }}>{item.id} • {item.location}</p>
+          <p>Trạng thái: {item.status}</p>
+          <p style={{ color: "var(--color-primary)", fontWeight: 700 }}>{item.fee}</p>
         </div>
+      ))}
 
-        <div className="space-y-6">
-          <div className="bg-[#e1aa36] text-[#5b4000] p-8 rounded">
-            <h4 className="text-2xl font-serif mb-4">Overview</h4>
-            <div className="space-y-3">
-              <div className="flex justify-between">
-                <span>Total Requests</span>
-                <span className="font-serif text-2xl">42</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Unassigned</span>
-                <span className="font-serif text-2xl">12</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Critical Need</span>
-                <span className="font-serif text-2xl text-red-700">3</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-[#efefd7] p-8 rounded">
-            <h4 className="text-2xl font-serif mb-6">Refine Ledger</h4>
-            <div className="space-y-5">
-              <input className="w-full border-b bg-transparent outline-none py-2" placeholder="e.g. Mathematics" />
-              <select className="w-full border-b bg-transparent outline-none py-2">
-                <option>All Locations</option>
-                <option>In-Person</option>
-                <option>Online</option>
-              </select>
-              <button className="w-full border px-4 py-2 rounded">Apply Filters</button>
-            </div>
-          </div>
+      {filtered.length === 0 && (
+        <div className="admin-card">
+          <p style={{ margin: 0, color: "var(--color-text-muted)" }}>Không có lớp trong trạng thái này.</p>
         </div>
-      </div>
-    </div>
+      )}
+    </section>
   );
 }

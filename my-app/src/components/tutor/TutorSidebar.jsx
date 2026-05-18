@@ -8,7 +8,6 @@ const menuItems = [
   { to: "/tutor/students", label: "Học viên", icon: "groups" },
   { to: "/tutor/schedule", label: "Lịch trình", icon: "calendar_month" },
   { to: "/tutor/finance", label: "Tài chính", icon: "account_balance_wallet" },
-  { to: "/tutor/find-students", label: "Tìm học viên", icon: "person_search" },
   { to: "/tutor/reviews", label: "Đánh giá", icon: "star" },
   { to: "/tutor/profile", label: "Hồ sơ cá nhân", icon: "account_circle" },
   
