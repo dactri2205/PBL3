@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { logout } from "../../services/authService";
 
 const navItems = [
   { to: "/admin/dashboard", label: "Dashboard", icon: "dashboard" },
@@ -10,6 +11,13 @@ const navItems = [
 ];
 
 export default function Sidebar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login", { replace: true });
+  };
+
   return (
     <aside className="hidden md:flex w-72 min-h-screen flex-col bg-[#f5f5dc] shrink-0">
       <div className="p-8 border-b border-stone-200/30">
@@ -46,7 +54,10 @@ export default function Sidebar() {
           <span>Support</span>
         </button>
 
-        <button className="w-full flex items-center gap-4 px-5 py-3 text-stone-600 hover:bg-[#fbfbe2] rounded-md">
+        <button
+          className="w-full flex items-center gap-4 px-5 py-3 text-stone-600 hover:bg-[#fbfbe2] rounded-md"
+          onClick={handleLogout}
+        >
           <span className="material-symbols-outlined shrink-0">logout</span>
           <span>Log out</span>
         </button>

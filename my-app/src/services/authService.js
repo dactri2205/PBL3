@@ -31,3 +31,8 @@ export const loginApi = (loginData) => {
     }, 800);
   });
 };
+
+export const logout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+};

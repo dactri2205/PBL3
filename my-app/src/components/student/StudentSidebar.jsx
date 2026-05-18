@@ -1,13 +1,25 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { logout } from "../../services/authService";
 
 const menuItems = [
   { to: "/student/dashboard", label: "Tổng quan", icon: "dashboard" },
+  { to: "/student/my-tutors", label: "Gia sư của tôi", icon: "school" },
   { to: "/student/find-tutor", label: "Tìm gia sư", icon: "search" },
+  { to: "/student/courses", label: "Khóa học", icon: "menu_book" },
   { to: "/student/schedule", label: "Lịch trình", icon: "calendar_month" },
+  { to: "/student/payments", label: "Thanh toán", icon: "payments" },
+  { to: "/student/reviews", label: "Đánh giá", icon: "star" },
   { to: "/student/profile", label: "Hồ sơ cá nhân", icon: "person" },
 ];
 
 export default function StudentSidebar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login", { replace: true });
+  };
+
   return (
     <div className="student-sidebar">
       <div className="student-sidebar__brand">
@@ -45,7 +57,7 @@ export default function StudentSidebar() {
           </div>
         </div>
 
-        <button className="student-sidebar__logout">
+        <button className="student-sidebar__logout" onClick={handleLogout}>
           <span className="material-symbols-outlined student-sidebar__icon">
             logout
           </span>
