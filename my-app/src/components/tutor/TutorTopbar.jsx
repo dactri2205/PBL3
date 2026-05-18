@@ -35,7 +35,7 @@ export default function TutorTopbar({
           <img src="https://i.pravatar.cc/100?img=12" alt="Tutor avatar" />
 
           <div>
-            <div className="tutor-topbar__name">Trần Minh Thắng</div>
+            <div className="tutor-topbar__name">Ngô Văn Đắc Trí</div>
             <div className="tutor-topbar__role">Gia sư kim cương</div>
           </div>
         </div>

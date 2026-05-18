@@ -8,14 +8,14 @@ export const mockUsers = [
   },
   {
     id: 2,
-    fullName: "Tran Minh Thang",
+    fullName: "Ngô Văn Đắc Trí",
     email: "tutor@gmail.com",
     password: "123456789",
     role: "tutor",
   },
   {
     id: 3,
-    fullName: "Nguyen Thanh Trung",
+    fullName: "Nguyễn Thanh Trung",
     email: "student@gmail.com",
     password: "123456789",
     role: "student",

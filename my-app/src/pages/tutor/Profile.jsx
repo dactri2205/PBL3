@@ -12,7 +12,7 @@ const getInitialProfile = () => {
   const user = getStoredUser();
 
   const defaultProfile = {
-    name: "Trần Minh Thắng",
+    name: "Ngô Văn Đắc Trí",
     title: "Gia sư Kim Cương · Toán nâng cao",
     email: user.email || "thang.tutor@example.com",
     phone: "+84 901 234 567",

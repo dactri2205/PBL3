@@ -1,3 +1,5 @@
+import { useMemo, useState } from "react";
+
 const accounts = [
   { id: "#1042", name: "Eleanor Vance", email: "e.vance@scholarly.edu", role: "Admin", status: "ACTIVE" },
   { id: "#1045", name: "Dr. Alistair Crane", email: "a.crane@university.edu", role: "Tutor", status: "ACTIVE" },
@@ -5,55 +7,93 @@ const accounts = [
   { id: "#1051", name: "Silas Marner", email: "s.marner@weaver.net", role: "Tutor", status: "SUSPENDED" },
 ];
 
+const roles = ["All", "Tutor", "Student", "Admin"];
+
 export default function Accounts() {
+  const [query, setQuery] = useState("");
+  const [roleFilter, setRoleFilter] = useState("All");
+
+  const filtered = useMemo(() => {
+    return accounts.filter((item) => {
+      const matchRole = roleFilter === "All" || item.role === roleFilter;
+      const key = `${item.id} ${item.name} ${item.email}`.toLowerCase();
+      const matchQuery = key.includes(query.trim().toLowerCase());
+      return matchRole && matchQuery;
+    });
+  }, [query, roleFilter]);
+
   return (
-    <div className="max-w-7xl mx-auto space-y-8">
-      <div>
-        <h2 className="text-5xl font-serif">Account Registry</h2>
-        <p className="mt-2 text-stone-600">Manage and audit system access.</p>
+    <section className="admin-page">
+      <div className="admin-page__header">
+        <h2>Quản lý tài khoản</h2>
+        <p>Quản trị người dùng và quyền truy cập hệ thống.</p>
       </div>
 
-      <div className="bg-[#efefd7] p-6 rounded flex flex-col lg:flex-row gap-4 justify-between">
+      <div className="admin-toolbar">
         <input
-          className="bg-transparent border-b border-stone-300 outline-none px-1 py-2 w-full lg:max-w-md"
-          placeholder="Search by name, email, or ID..."
+          className="admin-input"
+          placeholder="Tìm theo tên, email hoặc mã..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
-        <div className="flex gap-2 flex-wrap">
-          <button className="px-4 py-2 bg-[#e1aa36] text-[#5b4000] rounded">All Roles</button>
-          <button className="px-4 py-2 bg-white rounded">Tutor</button>
-          <button className="px-4 py-2 bg-white rounded">Student</button>
-          <button className="px-4 py-2 bg-white rounded">Admin</button>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {roles.map((role) => {
+            const isActive = roleFilter === role;
+            return (
+              <button
+                key={role}
+                type="button"
+                className={`admin-btn ${isActive ? "admin-btn--primary" : "admin-btn--secondary"}`}
+                onClick={() => setRoleFilter(role)}
+              >
+                {role === "All" ? "Tất cả" : role}
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      <div className="bg-white rounded p-8 overflow-x-auto">
-        <table className="w-full text-left">
+      <div className="admin-card" style={{ overflowX: "auto" }}>
+        <table className="admin-table">
           <thead>
-            <tr className="text-xs uppercase tracking-widest text-stone-500 border-b">
-              <th className="py-4">ID</th>
-              <th>Name</th>
+            <tr>
+              <th>ID</th>
+              <th>Tên</th>
               <th>Email</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th className="text-right">Actions</th>
+              <th>Vai trò</th>
+              <th>Trạng thái</th>
+              <th style={{ textAlign: "right" }}>Thao tác</th>
             </tr>
           </thead>
           <tbody>
-            {accounts.map((item) => (
-              <tr key={item.id} className="border-b last:border-0 hover:bg-[#f8f6ee]">
-                <td className="py-4">{item.id}</td>
+            {filtered.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.email}</td>
                 <td>{item.role}</td>
                 <td>{item.status}</td>
-                <td className="text-right">
-                  <button className="text-[#7b5800]">Edit</button>
+                <td style={{ textAlign: "right" }}>
+                  <button
+                    type="button"
+                    className="admin-btn admin-btn--secondary"
+                    onClick={() => window.alert(`Mở chỉnh sửa tài khoản ${item.id}`)}
+                  >
+                    Sửa
+                  </button>
                 </td>
               </tr>
             ))}
+            {filtered.length === 0 && (
+              <tr>
+                <td colSpan={6} style={{ textAlign: "center", color: "var(--color-text-muted)" }}>
+                  Không có dữ liệu phù hợp.
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
   );
 }

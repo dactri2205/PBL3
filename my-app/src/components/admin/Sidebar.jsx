@@ -2,12 +2,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { logout } from "../../services/authService";
 
 const navItems = [
-  { to: "/admin/dashboard", label: "Dashboard", icon: "dashboard" },
-  { to: "/admin/accounts", label: "Accounts", icon: "group" },
-  { to: "/admin/verifications", label: "Verifications", icon: "verified_user" },
-  { to: "/admin/transactions", label: "Transactions", icon: "account_balance_wallet" },
-  { to: "/admin/system-config", label: "System config", icon: "settings_suggest" },
-  { to: "/admin/classes", label: "Class Management", icon: "school" },
+  { to: "/admin/dashboard", label: "Tổng quan", icon: "dashboard" },
+  { to: "/admin/accounts", label: "Tài khoản", icon: "group" },
+  { to: "/admin/verifications", label: "Xác minh", icon: "verified_user" },
+  { to: "/admin/transactions", label: "Giao dịch", icon: "account_balance_wallet" },
+  { to: "/admin/system-config", label: "Cấu hình", icon: "settings_suggest" },
+  { to: "/admin/classes", label: "Quản lý lớp", icon: "school" },
 ];
 
 export default function Sidebar() {
@@ -19,49 +19,41 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="hidden md:flex w-72 min-h-screen flex-col bg-[#f5f5dc] shrink-0">
-      <div className="p-8 border-b border-stone-200/30">
-        <h1 className="text-3xl italic text-[#7b5800] font-serif">The Editorial</h1>
-        <p className="mt-3 text-sm uppercase tracking-[0.2em] text-stone-500">
-          Archivist Admin
-        </p>
+    <div className="admin-sidebar">
+      <div className="admin-sidebar__brand">
+        <div className="admin-sidebar__logo">E</div>
+        <div className="admin-sidebar__brand-text">EduMatch</div>
       </div>
 
-      <nav className="flex-1 px-3 py-6 space-y-2">
+      <nav className="admin-sidebar__menu">
         {navItems.map((item) => (
           <NavLink
             key={item.to}
             to={item.to}
             className={({ isActive }) =>
-              `flex items-center gap-4 px-5 py-4 rounded-l-md transition-colors ${
-                isActive
-                  ? "bg-[#fbfbe2] text-[#7b5800] font-bold border-r-4 border-[#7b5800]"
-                  : "text-stone-600 hover:bg-[#fbfbe2]"
-              }`
+              `admin-sidebar__link ${isActive ? "admin-sidebar__link--active" : ""}`
             }
           >
-            <span className="material-symbols-outlined shrink-0">
-              {item.icon}
-            </span>
-            <span className="text-[15px] leading-6">{item.label}</span>
+            <span className="material-symbols-outlined admin-sidebar__icon">{item.icon}</span>
+            <span className="admin-sidebar__label">{item.label}</span>
           </NavLink>
         ))}
       </nav>
 
-      <div className="p-4 mt-auto space-y-2 border-t border-stone-200/30">
-        <button className="w-full flex items-center gap-4 px-5 py-3 text-stone-600 hover:bg-[#fbfbe2] rounded-md">
-          <span className="material-symbols-outlined shrink-0">help</span>
-          <span>Support</span>
-        </button>
+      <div className="admin-sidebar__footer">
+        <div className="admin-sidebar__role">
+          <span className="material-symbols-outlined admin-sidebar__icon">admin_panel_settings</span>
+          <div>
+            <div className="admin-sidebar__role-caption">Đang là</div>
+            <div className="admin-sidebar__role-value">Quản trị viên</div>
+          </div>
+        </div>
 
-        <button
-          className="w-full flex items-center gap-4 px-5 py-3 text-stone-600 hover:bg-[#fbfbe2] rounded-md"
-          onClick={handleLogout}
-        >
-          <span className="material-symbols-outlined shrink-0">logout</span>
-          <span>Log out</span>
+        <button className="admin-sidebar__logout" onClick={handleLogout}>
+          <span className="material-symbols-outlined admin-sidebar__icon">logout</span>
+          <span>Đăng xuất</span>
         </button>
       </div>
-    </aside>
+    </div>
   );
 }
