@@ -1,13 +1,23 @@
 import LazyAvatar from "./LazyAvatar";
 
-export default function TutorCard({ tutor }) {
+const formatPrice = (price) => {
+  if (typeof price === "number") {
+    return `${price.toLocaleString("vi-VN")}đ`;
+  }
+
+  return price;
+};
+
+export default function TutorCard({ tutor, actionLabel = "Chi tiết", onAction, disabled = false }) {
+  const subjects = tutor.subjects || [tutor.subject].filter(Boolean);
+
   return (
     <article className="tutor-card">
       <div className="tutor-card__top">
         <LazyAvatar
           src={tutor.avatar}
           alt={tutor.name}
-          fallback="/assets/images/avatar-placeholder.png"
+          fallback="/anonymous.jpg"
         />
 
         <div className="tutor-card__main">
@@ -18,11 +28,13 @@ export default function TutorCard({ tutor }) {
               star
             </span>
             <span className="tutor-card__rating-value">{tutor.rating}</span>
-            <span className="tutor-card__reviews">({tutor.reviews} đánh giá)</span>
+            <span className="tutor-card__reviews">
+              ({tutor.reviews || 0} đánh giá)
+            </span>
           </div>
 
           <div className="tutor-card__tags">
-            {tutor.subjects.map((subject) => (
+            {subjects.map((subject) => (
               <span key={subject} className="tutor-card__tag">
                 {subject}
               </span>
@@ -31,18 +43,22 @@ export default function TutorCard({ tutor }) {
         </div>
       </div>
 
-      <p className="tutor-card__desc">{tutor.description}</p>
+      <p className="tutor-card__desc">
+        {tutor.description || tutor.experience || `${tutor.city} · ${tutor.mode === "online" ? "Online" : "Trực tiếp"}`}
+      </p>
 
       <div className="tutor-card__bottom">
         <div>
           <p className="tutor-card__fee-label">HỌC PHÍ TỪ</p>
           <p className="tutor-card__fee">
-            {tutor.price}
+            {formatPrice(tutor.price)}
             <span>/giờ</span>
           </p>
         </div>
 
-        <button className="tutor-card__btn">Chi tiết</button>
+        <button className="tutor-card__btn" onClick={onAction} disabled={disabled}>
+          {actionLabel}
+        </button>
       </div>
     </article>
   );

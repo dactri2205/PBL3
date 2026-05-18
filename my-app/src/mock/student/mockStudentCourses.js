@@ -1,0 +1,26 @@
+export const studentCourses = [
+  {
+    id: 1,
+    title: "IELTS Writing Intensive",
+    tutorName: "Lê Thị Bình",
+    subject: "IELTS Writing",
+    schedule: "T3, T5 - 19:00",
+    price: 3200000,
+    maxStudents: 8,
+    currentStudents: 5,
+    status: "available",
+    reviewed: false,
+  },
+  {
+    id: 2,
+    title: "Toán lớp 12 ôn thi THPT",
+    tutorName: "Trần Minh Thắng",
+    subject: "Toán lớp 12",
+    schedule: "T2, T4 - 18:30",
+    price: 2500000,
+    maxStudents: 10,
+    currentStudents: 7,
+    status: "registered",
+    reviewed: false,
+  },
+];

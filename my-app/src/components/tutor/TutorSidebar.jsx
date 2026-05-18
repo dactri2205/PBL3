@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { logout } from "../../services/authService";
 
 const menuItems = [
   { to: "/tutor/dashboard", label: "Tổng quan", icon: "dashboard" },
@@ -14,6 +15,13 @@ const menuItems = [
 ];
 
 export default function TutorSidebar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login", { replace: true });
+  };
+
   return (
     <div className="tutor-sidebar">
       <div className="tutor-sidebar__brand">
@@ -45,7 +53,7 @@ export default function TutorSidebar() {
           </div>
         </div>
 
-        <button className="tutor-sidebar__logout">
+        <button className="tutor-sidebar__logout" onClick={handleLogout}>
           <span className="material-symbols-outlined">logout</span>
           Đăng xuất
         </button>
