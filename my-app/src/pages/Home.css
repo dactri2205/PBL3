@@ -244,3 +244,55 @@
     padding: 12px;
   }
 }
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 48px;
+  background: #f6f4e6;
+  border-bottom: 1px solid rgba(124, 110, 39, 0.12);
+}
+
+.home-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.home-logo-dot {
+  width: 10px;
+  height: 10px;
+  background: #2b8a5b;
+  border-radius: 50%;
+}
+
+.home-logo h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: #16213e;
+}
+
+.home-nav {
+  display: flex;
+  gap: 22px;
+}
+
+.home-nav button {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  color: #2f2a22;
+  font-weight: 500;
+}
+
+.home-nav button:hover {
+  color: #7c6e27;
+}
+
+.home-auth {
+  display: flex;
+  gap: 12px;
+}
