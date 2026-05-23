@@ -74,6 +74,30 @@ const tutors = [
       },
     ],
   },
+   {
+    id: 4,
+    name: "Phạm Đình Thắng",
+    subject: "Vật Lý lớp 10-12",
+    rating: "5.0",
+    reviews: 74,
+    price: "300.000đ/giờ",
+    experience: "3 năm kinh nghiệm",
+    badge: "Sinh Viên Sư Phạm Lý",
+    desc: "Hỗ trợ Vật Lý lớp 10-12, giúp học viên hiểu bản chất và giải quyết bài tập hiệu quả.",
+    detail:
+      "Gia sư hướng dẫn tận tâm ",
+    feedbacks: [
+      {
+        student: "Đức Trí",
+        content:
+          "Anh hướng dẫn rất thực tế, giúp em hiểu cách làm bài tập rõ hơn.",
+      },
+      {
+        student: "Thanh Bình",
+        content: "Giải thích dễ hiểu, đặc biệt là phần cơ học và điện từ.",
+      },
+    ],
+  },
 ];
 
 const Tutors = () => {
